@@ -65,42 +65,42 @@ def generate_todo_dict (file_name):
 	if line != "":
 	    # Match the task's priority and add it to the dictionary,
 	    # default to 4
-	match = re.search("--pri=((-)?\d+)", line)
-        if match != None:
-            pri = match.group(1)
-        else:
-            pri = 4
+	    match = re.search("--pri=((-)?\d+)", line)
+	    if match != None:
+		pri = match.group(1)
+	    else:
+		pri = 4
 	    # Match the task's level of highlighting and add it to the
 	    # dictionary, default to 4.
-        match = re.search("--lev=(\d+)", line)
-        if match != None:
-            lev = match.group(1)
-        else:
-            lev = 0
+	    match = re.search("--lev=(\d+)", line)
+	    if match != None:
+		lev = match.group(1)
+	    else:
+		lev = 0
 	    # If the task has been completed the --comp flag will exist, match
 	    # it and add it to the dictionary.
-        match = re.search("--comp=(\d+\.\d+)", line)
-        if None != match:
-            comp = match.group(1)
-        else:
-            comp = 0
+	    match = re.search("--comp=(\d+\.\d+)", line)
+	    if None != match:
+		comp = match.group(1)
+	    else:
+		comp = 0
 	    # Get the date a task was added if it exists
 	    match = re.search("--add=(\d+\.\d+)", line)
 	    if None != match:
-		    add = match.group(1)
+		add = match.group(1)
 	    else:
-		    add = 0
+		add = 0
 	    # Get the due date of the task if it exists
 	    match = re.search("--due=(\d+\.\d+)", line)
 	    if None != match:
-		    due = match.group(1)
+		due = match.group(1)
 	    else:
-		    due = 0
+		due = 0
 	    # Get rid of the stored metadata of the file
-        sanitize = strip_internal_format(line)
+	    sanitize = strip_internal_format(line)
 	    # Create a new entry in the dictionary at the right priority level.
-        entry = dictionary[int(pri)]
-        keys = entry.keys()
+	    entry = dictionary[int(pri)]
+	    keys = entry.keys()
 	    # Find out if there are any exisiting tasks at this priortiy level.
 	    # Assign the task number that this task will use.
             if [] != keys:
